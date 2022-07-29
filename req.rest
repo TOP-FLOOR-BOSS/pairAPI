@@ -1,0 +1,1 @@
+GET mysql://ual1jagygyw0df2l:6FhxiIiEG9Xs5hFChP7L@bzj5wwg3gsp0cwijzydr-mysql.services.clever-cloud.com:3306/bzj5wwg3gsp0cwijzydr
