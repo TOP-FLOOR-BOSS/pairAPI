@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const db = require('./config/dbconn');
 const {compare, hash} = require('bcrypt');
+const path = require('path');
 // Express app
 const app = express();
 // Express router
@@ -18,7 +19,10 @@ app.use(router, cors(), express.json(), express.urlencoded({
 app.listen(port, ()=> {
     console.log(`Server is running on port ${port}`);
 });
-
+// Home
+router.get('/', (req, res)=>{
+    res.status(200).sendFile(path.join(__dirname, 'views', 'index.html'));
+});
 // User registration
 router.post('/register', bodyParser.json(), async (req, res)=> {
     const bd = req.body; 
