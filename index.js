@@ -26,30 +26,31 @@ router.get('/', (req, res)=> {
 router.get('/register', (req, res)=> {
     res.status(200).sendFile(path.join(__dirname, 'views', 'register.html'));
 });
-// User registration
+// User registration 
 app.post('/register',bodyParser.json(),
     async (req, res)=> {
-        const {firstname, lastname, gender, address, userRole, 
-        email, userpassword} = req.body;
-        if(userRole.length === 0) {
-            userRole = 'user';
-        }
-        // Encrypting a password
-        // Default value of salt is 10.
-        userpassword = await hash(userpassword, 10);
-        // Query
-        const strQry =
-        `
-        INSERT INTO users(firstname, lastname, gender, address, userRole, email, userpassword)
-        VALUES(?, ?, ?, ?, ?, ?, ?);
-        `;
-        db.query(strQry,
-            [firstname, lastname, gender, address, userRole, email, userpassword],
-            (err, results)=> {
-                if(err) throw err;
-                res.send(`number of affected row/s: ${results.affectedRows}`);
-            })
-        res.status(302).redirect('/'); 
+    let {firstname, lastname, gender, address, userRole, 
+    email, userpassword} = req.body;
+
+    if(userRole.length === 0)  {
+        userRole = 'user';
+    }
+    // Encrypting a password
+    // Default value of salt is 10.
+    userpassword = await hash(userpassword, 10);
+    // Query
+    const strQry =
+    `
+    INSERT INTO users(firstname, lastname, gender, address, userRole, email, userpassword)
+    VALUES(?, ?, ?, ?, ?, ?, ?);
+    `;
+    db.query(strQry,
+        [firstname, lastname, gender, address, userRole, email, userpassword],
+        (err, results)=> {
+            if(err) throw err;
+            res.send(`number of affected row/s: ${results.affectedRows}`);
+        })
+    // res.status(302).redirect('/'); 
 
 });
 // Login

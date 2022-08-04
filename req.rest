@@ -1,12 +1,14 @@
-GET http://localhost:3000/products
+
 
 ###
-POST https://liam-picknpayapi.herokuapp.com/register
+POST http://localhost:3000/register
 Content-Type: application/json
 
 {
     "firstname": "Peter",
     "lastname": "Peterson",
     "gender": "Male",
-    
+    "userRole": "user",
+    "email": "peter@gmaill.com",
+    "userpassword": "peter2022"
 }
