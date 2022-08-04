@@ -31,7 +31,7 @@ app.post('/register',bodyParser.json(),
     async (req, res)=> {
     try{
         const bd = req.body;
-        if(bd.userRole === ' ' || bd.userRole === null) {
+        if(bd.userRole.length === 0) {
             bd.userRole = 'user';
         }
         // Encrypting a password
