@@ -30,14 +30,15 @@ router.get('/register', (req, res)=> {
 app.post('/register',bodyParser.json(),
     async (req, res)=> {
     try{
-        const bd = req.body;
+        const {firstname, lastname, gender, address, userRole, 
+        email, userpassword} = req.body;
         console.log(bd);
-        if(bd.userRole.length === 0) {
-            bd.userRole = 'user';
+        if(userRole.length === 0) {
+            userRole = 'user';
         }
         // Encrypting a password
         // Default value of salt is 10.
-        bd.userpassword = await hash(bd.userpassword, 10);
+        userpassword = await hash(userpassword, 10);
         // Query
         const strQry =
         `
@@ -45,7 +46,7 @@ app.post('/register',bodyParser.json(),
         VALUES(?, ?, ?, ?, ?, ?, ?);
         `;
         db.query(strQry,
-            [bd.firstname, bd.lastname, bd.gender, bd.address, bd.userRole, bd.email, bd.userpassword],
+            [firstname, lastname, gender, address, userRole, email, userpassword],
             (err, results)=> {
                 if(err) throw err;
                 res.send(`number of affected row/s: ${results.affectedRows}`);
