@@ -31,6 +31,7 @@ app.post('/register',bodyParser.json(),
     async (req, res)=> {
     try{
         const bd = req.body;
+        console.log(bd);
         if(bd.userRole.length === 0) {
             bd.userRole = 'user';
         }
@@ -44,7 +45,7 @@ app.post('/register',bodyParser.json(),
         VALUES(?, ?, ?, ?, ?, ?, ?);
         `;
         db.query(strQry,
-            [bd.firstname, bd.lastname, bd.gender, bd.address, bd.userRole,bd.email, bd.userpassword],
+            [bd.firstname, bd.lastname, bd.gender, bd.address, bd.userRole, bd.email, bd.userpassword],
             (err, results)=> {
                 if(err) throw err;
                 res.send(`number of affected row/s: ${results.affectedRows}`);
