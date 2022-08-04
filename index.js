@@ -23,6 +23,7 @@ app.listen(port, ()=> {
 router.get('/', (req, res)=>{
     res.status(200).sendFile(path.join(__dirname, 'views', 'index.html'));
 });
+
 // User registration
 router.post('/register', bodyParser.json(), async (req, res)=> {
     const bd = req.body; 
