@@ -32,7 +32,7 @@ app.post('/register',bodyParser.json(),
     try{
         const {firstname, lastname, gender, address, userRole, 
         email, userpassword} = req.body;
-        console.log(bd);
+        console.log(userRole);
         if(userRole.length === 0) {
             userRole = 'user';
         }
