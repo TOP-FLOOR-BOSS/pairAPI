@@ -53,6 +53,7 @@ app.post('/register',bodyParser.json(),
     }catch(e) {
         console.log(`From registration: ${e.message}`);
     }
+    res.status(302).redirect('/');
 });
 // Login
 router.post('/login', bodyParser.json(),
