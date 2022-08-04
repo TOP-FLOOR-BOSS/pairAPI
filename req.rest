@@ -1,13 +1,12 @@
 GET http://localhost:3000/products
 
 ###
-POST http://localhost:3000/products
+POST https://liam-picknpayapi.herokuapp.com/register
 Content-Type: application/json
 
 {
- "prodName": "Bread",
- "prodUrl": "https://i.postimg.cc/d1CpF8Q9/IMG-20201029-WA0124.jpg",
- "quantity": 3,
- "price": 37,
- "dateCreated": "2022/07/29T12:11:00"   
+    "firstname": "Peter",
+    "lastname": "Peterson",
+    "gender": "Male",
+    
 }
