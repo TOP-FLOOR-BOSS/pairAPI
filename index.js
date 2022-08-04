@@ -29,7 +29,6 @@ router.get('/register', (req, res)=> {
 // User registration
 app.post('/register',bodyParser.json(),
     async (req, res)=> {
-    try{
         const {firstname, lastname, gender, address, userRole, 
         email, userpassword} = req.body;
         if(userRole.length === 0) {
@@ -51,9 +50,6 @@ app.post('/register',bodyParser.json(),
                 res.send(`number of affected row/s: ${results.affectedRows}`);
             })
         res.status(302).redirect('/'); 
-    }catch(e) {
-        console.log(`From registration: ${e.message}`);
-    }
 
 });
 // Login
