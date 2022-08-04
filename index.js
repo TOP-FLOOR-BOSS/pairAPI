@@ -11,7 +11,7 @@ const app = express();
 // Express router
 const router = express.Router();
 // Configuration 
-const port = parseInt(process.env.Port) || 4000;
+const port = parseInt(process.env.PORT) || 4000;
 app.use(router, cors(), express.json(), express.urlencoded({
     extended: true
 }));
@@ -23,9 +23,12 @@ app.listen(port, ()=> {
 router.get('/', (req, res)=>{
     res.status(200).sendFile(path.join(__dirname, 'views', 'index.html'));
 });
+router.get('/register', (req, res)=>{
+    res.status(200).sendFile(path.join(__dirname, 'views', 'register.html'));
+});
 
 // User registration
-router.post('/register', bodyParser.json(), async (req, res)=> {
+app.post('/register', bodyParser.json(), async (req, res)=> {
     const bd = req.body; 
     // Encrypting a password
     // Default genSalt() is 10
