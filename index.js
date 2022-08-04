@@ -33,7 +33,7 @@ app.post('/register',bodyParser.json(),
         const {firstname, lastname, gender, address, userRole, 
         email, userpassword} = req.body;
         console.log(userRole);
-        if(userRole.length === 0) {
+        if(userRole == null || userRole == undefined) {
             userRole = 'user';
         }
         // Encrypting a password
