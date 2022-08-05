@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" 
+    content="width=device-width,
+     initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="card m-3 mx-auto" style="width: 18rem"  v-for="(testimonials, index) in testimonials" :key="index">
+        <img :src="testimonials.image" class="testimg img-fluid" />
+        <div class="card-body">
+          <h3>{{testimonials.title}}</h3>
+          <p class="card-text">
+            {{testimonials.paragraph}}
+          </p>
+        </div>
+      </div>
+
+
+      <script src="/views/items.js"></script>
+
+</body>
+</html>

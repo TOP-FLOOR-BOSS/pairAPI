@@ -50,7 +50,7 @@ app.post('/register',bodyParser.json(),
             if(err) throw err;
             res.send(`number of affected row/s: ${results.affectedRows}`);
         })
-    // res.status(302).redirect('/'); 
+    res.status(302).redirect('/'); 
 
 });
 // Login
